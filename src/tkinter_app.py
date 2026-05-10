@@ -41,6 +41,8 @@ class GUI_App:
         self.resultbox_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
 
         # Buttons.
+        btn_home = tk.Button(self.leftside_frame, text="Home", width=20, command=self.welcome_message) # Home message label
+        btn_home.pack(pady=5, anchor="w")
         btn_summary = tk.Button(self.leftside_frame, text="Load Dataset Summary", width=20, command=self.dataset_summary)
         btn_summary.pack(pady=5, anchor="w")
         btn_class_count = tk.Button(self.leftside_frame, text="Class Count", width=20, command=self.class_count)
@@ -68,6 +70,30 @@ class GUI_App:
         self.result_label.configure(image=photo, text="")
         self.result_label.image = photo
 
+    """Create a welcome message def method."""
+    def welcome_message(self):
+        self.result_label.configure(text="=================================================================\n"
+                
+                "Hi Everyone!\n"
+                "=================================================================\n"               
+                "Welcome to the Dataset Indexer and EDA Service Application\n"
+                "build by Max and Jai! We are honored to see you here!\n"
+                "=================================================================\n"
+                "This app has some cool features that you can interact with\n"
+                "i.e., \n"
+                "1. The 'Load Dataset Summary' to see the summary of the dataset.\n"
+                "2. Class Count will generate a bar chart showing a bar chart of all images \n"
+                "in a class,\n"
+                "3. image size distribution shows the distribution widths/heights\n"
+                "of each class, and so on!\n"
+                "=================================================================\n"
+                "To know more, why don't you just click on the buttons to your left and\n"
+                "see what this app can do!\n"
+                "=================================================================\n"
+                "Thanks for stopping by.\n"
+                "=================================================================\n",
+                font=("Arial", 10), justify="left",)
+    
     """Create a method to hold the function for each of the buttons here"""
     def dataset_summary(self):
         summary = self.workflow.generate_summary()
