@@ -1,0 +1,8 @@
+sys
+pathlib
+pandas
+opencv-python
+matplotlib
+seaborn
+tkinter
+pillow

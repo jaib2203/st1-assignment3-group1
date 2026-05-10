@@ -40,7 +40,7 @@ class GUI_App:
         self.resultbox_frame = tk.Frame(self.MainWindow, bg="light green")
         self.resultbox_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
 
-        # Buttons — use pack inside the left frame, all anchored to top.
+        # Buttons.
         btn_summary = tk.Button(self.leftside_frame, text="Load Dataset Summary", width=20, command=self.dataset_summary)
         btn_summary.pack(pady=5, anchor="w")
         btn_class_count = tk.Button(self.leftside_frame, text="Class Count", width=20, command=self.class_count)
