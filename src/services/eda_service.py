@@ -8,27 +8,25 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import dataset_indexer
 
-sys.path.insert(0, str(Path(__file__).parents[1])) # Required to resolve path to config.py
-from config import EDA_OUTPUT_DIR, IMAGE_SIZE
+config_path = Path("src/config.py") # Required to resolve path to config.py
+from config import IMAGE_SIZE
 
 class EDAService:
-    def __init__(self, dataframe: pd.DataFrame, output_dir: Path = EDA_OUTPUT_DIR):
+    def __init__(self, dataframe: pd.DataFrame):
         self.dataframe = dataframe
-        self.output_dir = output_dir
 
-    def generate_class_count(self) -> None:
+    def generate_class_count(self, output_dir: Path) -> None:
         """Generates and saves a bar chart showing the number of images per macroinvertebrate class."""
         self.dataframe["label"].value_counts().plot(kind="bar")
         plt.title("Image Per Macroinvertebrate Class")
         plt.xlabel("Class")
         plt.ylabel("Count")
         plt.tight_layout()
-        plt.savefig(self.output_dir / "class_count.jpg")
+        plt.savefig(output_dir / "class_count.jpg")
         plt.close()
 
-    def generate_image_size_distribution(self) -> None:
+    def generate_image_size_distribution(self, output_dir: Path) -> None:
         """Generates and saves a histogram showing the distribution of image widths/heights."""
         fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
@@ -37,10 +35,10 @@ class EDAService:
         axes[0].set_title("Image Width Distribution")
         axes[1].set_title("Image Height Distribution")
         plt.tight_layout()
-        plt.savefig(self.output_dir / "image_size_distribution.jpg")
+        plt.savefig(output_dir / "image_size_distribution.jpg")
         plt.close()
      
-    def generate_sample_grid(self) -> None:
+    def generate_sample_grid(self, output_dir: Path) -> None:
         """Generates and saves a grid of 9 sample images, selected randomly from the dataset each time."""
         samples = self.dataframe.sample(9)
 
@@ -55,19 +53,19 @@ class EDAService:
             ax.axis("off")  # hides the x/y axis ticks
         
         plt.tight_layout()
-        plt.savefig(self.output_dir / "sample_images.png")
+        plt.savefig(output_dir / "sample_images.jpg")
         plt.close()
 
-    def generate_image_per_class_grid(self) -> None:
+    def generate_image_per_class_grid(self, output_dir: Path) -> None:
         """As an alternative to the random grid generator, this class generates a grid of images with
         one image from each class."""
         classes = self.dataframe["label"].unique()
         cols = 4
-        rows = -(-len(classes) // cols)  # ceiling division
+        rows = -(-len(classes) // cols)
 
         fig, axes = plt.subplots(rows, cols, figsize=(16, rows * 4))
         for ax, label in zip(axes.flat, classes):
-            row = self.dataframe[self.dataframe["label"] == label].iloc[0]
+            row = self.dataframe[self.dataframe["label"] == label].sample(1).iloc[0]
             image = cv2.imread(row["file_path"])
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             ax.imshow(image)
@@ -77,7 +75,7 @@ class EDAService:
             ax.axis("off")
         plt.suptitle("One Sample Per Class")
         plt.tight_layout()
-        plt.savefig(self.output_dir / "one_per_class_grid.png")
+        plt.savefig(output_dir / "one_per_class_grid.jpg")
         plt.close()
         
 
