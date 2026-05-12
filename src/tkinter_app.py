@@ -85,7 +85,7 @@ class GUI_App:
                 "2. Class Count will generate a bar chart showing a bar chart of all images \n"
                 "in a class,\n"
                 "3. image size distribution shows the distribution of image widths/heights\n"
-                "accross the classes, and so on!\n"
+                "across the classes, and so on!\n"
                 "=================================================================\n"
                 "To know more, why don't you just click on the buttons to your left and\n"
                 "see what this app can do!\n"
