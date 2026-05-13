@@ -1,6 +1,14 @@
-# workflow_service.py
-# Coordinates the workflow of the various service classes & the tkinter GUI.
-# Some parts of this script were adapted from the assignment guidance document.
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+workflow_service.py
+Coordinates the workflow of the various service classes & the tkinter GUI.
+Some parts of this script were adapted from the assignment guidance document.
+-----------------------------------
+"""
 
 from pathlib import Path
 import pandas as pd
@@ -26,10 +34,9 @@ class WorkflowService:
         """
         Generates and saves the relevant graph/grid, returning the file path.
 
-        Parameters
-        ----------
-        type : string
-            Specifies the image to be generated. Must be one of the following strings:
+        Parameters:
+        type (string)
+            Specifies the image to be generated. Must be one of the following:
             "class_count" : class count bar graph.
             "image_size_distribution" : image width & heights distribution bar graph.
             "sample_images" : grid of 9 sample images.

@@ -1,5 +1,13 @@
-# config.py
-# This is where configuration data is stored for the project.
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+config.py
+This is where configuration data is stored for the project.
+-----------------------------------
+"""
 
 from pathlib import Path
 

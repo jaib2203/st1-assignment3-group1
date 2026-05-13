@@ -1,5 +1,13 @@
-# main.py
-# This executes the main workflow of the program.
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+main.py
+This executes the main workflow of the program.
+-----------------------------------
+"""
 
 import sys
 from pathlib import Path
@@ -10,7 +18,7 @@ from workflow_service import WorkflowService
 from tkinter_app import GUI_App
 
 def main() -> None:
-    """Launch the Tkinter application."""
+    """Launches the Tkinter application."""
     workflow = WorkflowService()
     GUI_App(workflow)
 

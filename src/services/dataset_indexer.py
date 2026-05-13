@@ -1,3 +1,14 @@
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+dataset_indexer.py
+Indexes the raw image data into a pandas DataFrame for easy analysis.
+-----------------------------------
+"""
+
 import sys
 from pathlib import Path
 import cv2

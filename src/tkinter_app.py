@@ -1,13 +1,19 @@
-# tkinter_app.py
-# Creates an app that will host and display the output from the dataset & EDA model.
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+tkinter_app.py
+Creates an app that will host and display the output from the dataset & EDA model.
+-----------------------------------
+"""
 
 # Import Tkinter module that is used to build the app
 import tkinter as tk
 from PIL import Image, ImageTk
 import sys
 from pathlib import Path 
-
-"""Create a path to access the dataset_indexer, eda_service, and config codes"""
 # Required to resolve path to workflow_service.py
 sys.path.insert(0, str(Path(__file__).parent / "services")) 
 from workflow_service import WorkflowService
@@ -60,9 +66,11 @@ class GUI_App:
         self.result_label = tk.Label(self.resultbox_frame, bg="light green", anchor="center")
         self.result_label.pack(expand=True, fill="both")
 
+        self.welcome_message() # Initialise the welcome screen.
+
         tk.mainloop()
 
-    def show_chart(self, chart_path: Path) -> None:
+    def show_chart(self, chart_path) -> None:
         """Display a chart image in the result area."""
         image = Image.open(chart_path)
         image.thumbnail((750, 550))
@@ -77,7 +85,7 @@ class GUI_App:
                 "Hi Everyone!\n"
                 "=================================================================\n"               
                 "Welcome to the Dataset Indexer and EDA Service Application\n"
-                "build by Max and Jai! We are honored to see you here!\n"
+                "built by Max and Jai! We are honoured to see you here!\n"
                 "=================================================================\n"
                 "This app has some cool features that you can interact with\n"
                 "i.e., \n"
@@ -90,7 +98,7 @@ class GUI_App:
                 "To know more, why don't you just click on the buttons to your left and\n"
                 "see what this app can do!\n"
                 "=================================================================\n"
-                "Thanks for stopping by.\n"
+                "Thanks!\n"
                 "=================================================================\n",
                 font=("Arial", 10), justify="left",)
     

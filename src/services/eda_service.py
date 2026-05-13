@@ -1,6 +1,14 @@
-# eda_service.py
-# Generates the analytical & visual data for the dataset.
-# A lot of the code used below was copied/adapted from the assignment guidance document.
+"""
+-----------------------------------
+Authors:
+u3329817 & u3295540
+Software Technology 1 Assessment 3, 13/05/2026
+
+eda_service.py
+Generates the analytical & visual data for the dataset.
+A lot of the code used below was copied/adapted from the assignment guidance document.
+-----------------------------------
+"""
 
 import sys
 import cv2
